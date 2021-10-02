@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="CSS/auten.css">
+    <!--<link rel="stylesheet" href="CSS/flexbox.css">-->
+</head>
+<body>
+    <header class="header">
+        <div class="navigator">
+            <img src= "./images/Logo.gif" />
+        </div>
+        <div class= "links">
+            <a class= "perfil">Inicio</a>
+            <a class= "Registrar">Registrar ventas</a>
+            <a class= "Ventas">Seguimiento ventas</a>      
+            <a class= "Inventario">Productos</a>        
+            <a class= "Usuarios">Gestión de usuarios</a>               
+        </div>
+    </header>
+    
+    <div class="contenedormav">
+        <h1>Módulo administrador de ventas</h1>
+            <div class="mav">
+                <div>
+                    <label for="id">ID</label><br>
+                    <input name="id" placeholder="Ingrese el ID de la Venta">
+                </div>
+                <div>
+                    <label for="cantidad">Cantidad</label><br>
+                    <input name="cantidad" placeholder="Ingrese la cantidad">
+                </div>
+                <div>
+                    <label for="descripcion">Descripcion</label><br>
+                    <textarea name="descripcion" placeholder="Ingrese el Detalle del producto"></textarea>
+                </div>
+                <div>
+                    <label for="valorTotal">Valor Total de la venta</label><br>
+                    <input name="valorTotal" placeholder="Ingrese el valor total de la venta">
+                </div>
+                <div>
+                    <label for="fechaInicial">Fecha de venta</label><br>
+                    <input type="date" name="fechaInicial" placeholder="Ingrese Fecha de venta">
+                </div>
+                <div>
+                    <label for="fechaFinal">Fecha de Pago</label><br>
+                    <input  type="date" name="fechaFinal" placeholder="Ingrese la Fecha de Pago">
+                </div>
+                <div>
+                    <button type="button">
+                        Guardar
+                    </button>
+                </div>
+            </div>
+    </div>
+    <footer>
+        All Rights Reserved © 2021
+    </footer>
+</body>
+</html>
