@@ -1,0 +1,36 @@
+###
+POST http://localhost:9000/api/ventas HTTP/1.1
+Content-Type: application/json
+
+{
+    "fechaPedido": "01-10-2021",
+    "producto": "saco",
+    "detalle": "verde rojo talla XL",
+    "precio": "70000",
+    "cantidad": "5",
+    "valorTotal": "350000",
+    "fechaPago": "31-10-2021"
+}
+
+###
+GET http://localhost:9000/api/ventas HTTP/1.1
+
+###
+GET http://localhost:9000/api/ventas/6164fcca4da2d5254f17b819 HTTP/1.1
+
+###
+PUT http://localhost:9000/api/ventas/6165b5fe5769295dbe30db30 HTTP/1.1
+Content-Type: application/json
+
+{
+    "fechaPedido": "31-10-2021",
+    "producto": "CHAQUETA",
+    "detalle": "MORADA rojo talla S",
+    "precio": "100000",
+    "cantidad": "5",
+    "valorTotal": "500000",
+    "fechaPago": "31-11-2021"
+}
+
+###
+DELETE http://localhost:9000/api/ventas/6164fc7c4da2d5254f17b817 HTTP/1.1
