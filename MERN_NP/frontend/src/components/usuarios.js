@@ -21,6 +21,7 @@ export default class userList extends Component {
     }
 
     deleteUser = async (userid) => {
+        
     await axios.delete("http://localhost:4000/api/usuarios/" + userid);
     this.getUser();
     

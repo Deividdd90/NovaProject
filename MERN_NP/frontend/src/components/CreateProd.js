@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 
-export default class Createprod extends Component {
+export default class CreateProd extends Component {
 
     state = {
         
@@ -15,7 +15,7 @@ export default class Createprod extends Component {
 
         onSubmit = async (e) => {
         e.preventDefault();
-        const newprod = {
+        const newProd = {
             Producto: this.state.Producto,
             Detalle: this.state.Detalle,
             Precio: this.state.Precio,
@@ -24,11 +24,11 @@ export default class Createprod extends Component {
         };
         
         if(this.state.editing){
-            await axios.put("http://localhost:4000/api/productos", this.state._id, newprod);
+            await axios.put("http://localhost:4000/api/productos", this.state._id, newProd);
 
         }
         else{
-        await axios.post ("http://localhost:4000/api/productos", newprod);
+        await axios.post ("http://localhost:4000/api/productos", newProd);
         }
        
         
@@ -49,7 +49,7 @@ export default class Createprod extends Component {
         return (
             <div className="col-md-6 offset-md-3">
                 <div className="card card-body">
-                    <h4>▒ Nuevo producto ▒  </h4>
+                    <h4>▒ Nuevo Producto ▒  </h4>
                     <form onSubmit={this.onSubmit}>
                         
                         
@@ -57,7 +57,7 @@ export default class Createprod extends Component {
                             <input
                                 type="text"
                                 className="form-control"
-                                placeholder="Nombre de producto"
+                                placeholder="Nombre producto"
                                 onChange={this.onInputChange}
                                 name="Producto"
                                 value={this.state.Producto}

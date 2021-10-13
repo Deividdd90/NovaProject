@@ -10,7 +10,9 @@ import CreateVenta from './components/CreateVenta';
 import CreateSventa from './components/CreateSventa';
 import userList from './components/usuarios';
 import editUser from './components/editUser';
-import prodList from './components/producto';
+import Prods from './components/producto';
+
+
 
 
 function App() {
@@ -22,7 +24,7 @@ function App() {
       <Route path="/usuario" component={userList} />
       <Route path="/newUser" component={CreateUser} />
       <Route path="/edit/:id" component={editUser} />
-      <Route path="/productos" component={prodList} />
+      <Route path="/productos" component={Prods} />
       <Route path="/newProd" component={CreateProd} />
       <Route path="/ventas" component={CreateVenta} />
       <Route path="/seg_ventas" component={CreateSventa} />

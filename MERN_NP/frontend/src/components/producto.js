@@ -9,22 +9,22 @@ export default class prodList extends Component {
         prods:[]
     }
     
-    componentDidMount() {
-    
-        this.getprod();
-        
-    }
+    componentDidMount() {    
+        this.getProd();
+        }
 
-    async getprod(){
+    async getProd(){
         const res = await axios.get("http://localhost:4000/api/productos")
         this.setState({prods:res.data})
     }
-
-    deleteprod = async (prodid) => {
-    await axios.delete("http://localhost:4000/api/productos/" + prodid);
-    this.getprod();
     
+    prodDelete = async (prodid) => {
+        console.log(prodid);
+    await axios.delete("http://localhost:4000/api/productos/" +prodid);
+    this.getProd();    
     }
+
+   
 
     render() {
         return (
@@ -34,12 +34,14 @@ export default class prodList extends Component {
                         <div className="col-md-4 p-2" key={prod._id}>
                             <div className="card">
                                 <div className="card-header d-flex justify-content-between">
+                                
                                     <h5>{prod.Producto}</h5>
-                                
-                                
-                                <Link className="btn btn-secondary" to = {"/edit/" + prod._id} >
+                                    
+                                    <Link className="btn btn-secondary" to = {"/edit/" + prod._id} >
                                 Editar
                                 </Link>
+                                
+                                
 
                                 </div>
                                 <div className="card-body">
@@ -49,7 +51,7 @@ export default class prodList extends Component {
                                     <p>Estado: {prod.Estado}</p>
                                 </div>
                                 <div className="card-footer" >
-                                    <button className="btn btn-danger" onClick={()=> this.deleteprod(prod._id)}>
+                                    <button className="btn btn-danger" onClick={()=> this.prodDelete(prod._id)}>
                                         Eliminar
                                     </button>
                                 </div>
