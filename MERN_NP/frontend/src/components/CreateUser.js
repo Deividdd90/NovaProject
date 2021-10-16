@@ -110,7 +110,7 @@ export default class CreateUser extends Component {
                                 onChange={this.onInputChange}
                                 name="estSelect"
                                 required>
-                                <option selected> Seleccione el tipo de usuario</option>
+                                <option selected> Seleccione el estado</option>
                                 <option value="Pendiente">Pendiente</option>
                                 <option value="Autorizado">Autorizado</option>
                                 <option value="No autorizado">No autorizado</option>
