@@ -4,46 +4,65 @@ import axios from 'axios'
 export default class CreateUser extends Component {
 
     state = {
-        
+        users: [],
         Nombre: "",
         Email: "",
         Cargo: "",
         Estado: "",
-        
-        
+        editing: false,
+        rolSelect: "",
+        estSelect: "",
+        _id: ""
     }
 
-        onSubmit = async (e) => {
-        e.preventDefault();
-        const newUser = {
-            Nombre: this.state.Nombre,
-            Email: this.state.Email,
-            Cargo: this.state.Cargo,
-            Estado: this.state.Estado
-           
-        };
-        
-        if(this.state.editing){
-            await axios.put("http://localhost:4000/api/usuarios", this.state._id, newUser);
+    async componentDidMount() {
 
+        if (this.props.match.params.id) {
+            const res = await axios.get("http://localhost:4000/api/usuarios/" + this.props.match.params.id);
+            this.setState(
+                {
+                    Nombre: res.data.Nombre,
+                    Email: res.data.Email,
+                    rolSelect: res.data.cargo,
+                    estSelect: res.data.Estado,
+                    editing: true,
+                    _id: res.data._id
+                }
+            )
         }
-        else{
-        await axios.post ("http://localhost:4000/api/usuarios", newUser);
+    }
+
+    onSubmit = async (e) => {
+        e.preventDefault();
+        if (this.state.editing) {
+            const updateUser = {
+                Nombre: this.state.Nombre,
+                Email: this.state.Email,
+                Cargo: this.state.rolSelect,
+                Estado: this.state.estSelect,
+            };
+            await axios.put("http://localhost:4000/api/usuarios/" + this.state._id, updateUser);
         }
-       
-        
+
+        else {
+            const newUser = {
+                Nombre: this.state.Nombre,
+                Email: this.state.Email,
+                Cargo: this.state.rolSelect,
+                Estado: this.state.estSelect,
+            };
+            await axios.post("http://localhost:4000/api/usuarios", newUser);
+        }
         window.location.href = '/usuario';
-        
     }
 
     onInputChange = (e) => {
-        
         this.setState({
             [e.target.name]: e.target.value
         })
     }
 
-    
+
 
     render() {
         return (
@@ -51,8 +70,6 @@ export default class CreateUser extends Component {
                 <div className="card card-body">
                     <h4>▒ Nuevo Usuario ▒  </h4>
                     <form onSubmit={this.onSubmit}>
-                        
-                        
                         <div className="form-group">
                             <input
                                 type="text"
@@ -63,9 +80,8 @@ export default class CreateUser extends Component {
                                 value={this.state.Nombre}
                                 required />
                         </div>
-                        
                         <div className="form-group">
-                            <textarea
+                            <input
                                 type="text"
                                 className="form-control"
                                 placeholder="Email"
@@ -73,37 +89,40 @@ export default class CreateUser extends Component {
                                 onChange={this.onInputChange}
                                 value={this.state.Email}
                                 required>
-                            </textarea>
+                            </input>
                         </div>
-                        
                         <div className="form-group">
-                            <textarea
-                                type="text"
+                            <select
                                 className="form-control"
-                                placeholder="Cargo"
-                                name="Cargo"
+                                value={this.state.rolSelect}
                                 onChange={this.onInputChange}
-                                value={this.state.Cargo}
+                                name="rolSelect"
                                 required>
-                            </textarea>
+                                <option selected> Seleccione el tipo de usuario</option>
+                                <option value="Administrador">Administrador</option>
+                                <option value="Vendedor">Vendedor</option>
+                            </select>
                         </div>
-
                         <div className="form-group">
-                            <textarea
-                                type="text"
+                            <select
                                 className="form-control"
-                                placeholder="Estado"
-                                name="Estado"
+                                value={this.state.estSelect}
                                 onChange={this.onInputChange}
-                                value={this.state.Estado}
+                                name="estSelect"
                                 required>
-                            </textarea>
+                                <option selected> Seleccione el tipo de usuario</option>
+                                <option value="Pendiente">Pendiente</option>
+                                <option value="Autorizado">Autorizado</option>
+                                <option value="No autorizado">No autorizado</option>
+                            </select>
                         </div>
 
                         <button className="btn btn-primary">
-                            Crear Usuario<i className="material-icons"> </i>
+                            Guardar <i className="material-icons"> </i>
                         </button>
+
                     </form>
+
                 </div>
             </div>
         )

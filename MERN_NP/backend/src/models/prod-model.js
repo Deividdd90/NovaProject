@@ -1,22 +1,11 @@
 const {Schema , model} = require("mongoose");
 
 const prodSchema=new Schema ({
-    Producto: {
-        type:String,
-        required: true
-    },
-    Detalle: {
-        type:String,
-        required: true
-    },
-    Precio: {
-        type:String,
-        required: true
-    },
-    Estado: {
-        type:String,
-        required: true
-    },
-}, {timestamps:true});
+    Producto:String,
+    Detalle: String,
+    Precio: String,
+    Estado: String
+
+});
 
 module.exports = model ("Productos", prodSchema);

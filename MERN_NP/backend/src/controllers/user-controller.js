@@ -18,7 +18,7 @@ userCtrl.createUser= async (request,response)=> {
         Estado
       });
     await newUser.save();
-    response.json({message: "Usuario creado 232"})
+    response.json({message: "Usuario creado"})
 };
 
 //consultar un usuario por id
