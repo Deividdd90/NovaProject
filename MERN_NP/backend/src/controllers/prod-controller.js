@@ -21,24 +21,24 @@ prodCtrl.createProd= async (request,response)=> {
 
 
 prodCtrl.getProd = async (request,response)=> {
-    const prod = await userModel.findById(request.params.id);
+    const prod = await prodModel.findById(request.params.id);
     response.json(prod)
 }   
 
 
 prodCtrl.updateProd =  async (request,response)=> {
     const {Producto, Detalle, Precio, Estado} = request.body;
-    await userModel.findByIdAndUpdate(request.params.id,{
+    await prodModel.findByIdAndUpdate(request.params.id,{
         Producto,
         Detalle,
         Precio,
         Estado    
     })
-    response.json({message: "Producto actualizada"})
+    response.json({message: "Producto actualizado"})
 }
 
 prodCtrl.deleteProd = async(request,response)=> {
-    await userModel.findByIdAndDelete(request.params.id);
+    await prodModel.findByIdAndDelete(request.params.id);
     response.json({message: "Producto eliminado"})
 }
 

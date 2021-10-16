@@ -13,9 +13,11 @@ export default class CreateVenta extends Component {
 
     render() {
         return (
-            <div>
-               Crear Venta en proceso 
-            </div>
+            
+                <div>
+En proceso
+
+                </div>
         )
     }
 }
