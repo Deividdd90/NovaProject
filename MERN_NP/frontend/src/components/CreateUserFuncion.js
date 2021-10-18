@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
+import axios from "axios";
 
 
 const CreateUserFuncion = (props) => {
-
     const [users, setUsers] = useState([])
     const [editing, setEditing] = useState(false)
-    
     const [id, setId] = useState("")
     const [objeto, setObjeto] = useState({
         Nombre: "",
@@ -14,25 +13,21 @@ const CreateUserFuncion = (props) => {
         Estado: "",
     })
 
-
     const onInputChange = (e) => {
         setObjeto({
             ...objeto,
             [e.target.name]: e.target.value
-            
         });
     }
 
-
-
-    useEffect(() => {
+    useEffect(async() =>  {
         if (props.match.params.id) {
             const res = await axios.get("http://localhost:4000/api/usuarios/" + props.match.params.id);
             setObjeto(
                 {
                     Nombre: res.data.Nombre,
                     Email: res.data.Email,
-                    Cargo:res.data.cargo,            
+                    Cargo: res.data.cargo,
                     Estado: res.data.Estado
                 }
             )
@@ -41,18 +36,34 @@ const CreateUserFuncion = (props) => {
         }
     }, [])
 
-
-
-
-
-
-
+    const onSubmit = async (e) => {
+        e.preventDefault();
+        if (setEditing) {
+            const updateUser = {
+                Nombre: objeto.Nombre,
+                Email: objeto.Email,
+                Cargo: objeto.Cargo,
+                Estado: objeto.Estado,
+            };
+            await axios.put("http://localhost:4000/api/usuarios/" + setId, updateUser);
+        }
+        else {
+            const newUser = {
+                Nombre: objeto.Nombre,
+                Email: objeto.Email,
+                Cargo: objeto.Cargo,
+                Estado: objeto.Estado,
+            };
+            await axios.post("http://localhost:4000/api/usuarios", newUser);
+        }
+        window.location.href = '/usuario';
+    }
 
     return (
         <div className="col-md-6 offset-md-3">
             <div className="card card-body">
                 <h4>▒ Nuevo Usuario ▒  </h4>
-                <form onSubmit={this.onSubmit}>
+                <form onSubmit={onSubmit}>
                     <div className="form-group">
                         <input
                             type="text"

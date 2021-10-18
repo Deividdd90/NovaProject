@@ -66,8 +66,8 @@ export default class prodList extends Component {
                 <div className="card-header d-flex justify-content-between">
 
 
-                    <Link className="btn btn-secondary" to={"/newProd"} >
-                        <p class="fw-bold">Guardar</p>
+                    <Link className="btn btn-info" to={"/newProd"} >
+                        <p class="fw-bold">Nuevo producto</p>
                     </Link>
                 </div>
 

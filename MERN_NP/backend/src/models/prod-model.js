@@ -3,7 +3,7 @@ const {Schema , model} = require("mongoose");
 const prodSchema=new Schema ({
     Producto:String,
     Detalle: String,
-    Precio: String,
+    Precio: Number,
     Estado: String
 
 });

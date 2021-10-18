@@ -6,16 +6,13 @@ import Navigation from './components/Navigation';
 import CreateUser from './components/CreateUser';
 import CreateProd from './components/CreateProd';
 import CreateVenta from './components/CreateVenta';
-import CreateSventa from './components/CreateSventa';
+import SegVenta from './components/SegVenta';
 import UserList from './components/usuarios';
 import Prods from './components/producto';
 import IniSession from "./components/auten/inisession";
+import CreateUserFuncion from "./components/CreateUserFuncion";
 
-function App() {
-
-    
-  
- 
+function App() { 
   return (
     <Router>
       <Navigation />
@@ -25,19 +22,14 @@ function App() {
         <Route path="/newUser" component={CreateUser} />
         <Route path="/edit/:id" component={CreateUser} />
         <Route path="/editp/:id" component={CreateProd} />
+        <Route path="/editv/:id" component={CreateVenta} />
         <Route path="/productos" component={Prods} />
         <Route path="/newProd" component={CreateProd} />
         <Route path="/ventas" component={CreateVenta} />
-        <Route path="/seg_ventas" component={CreateSventa} />
+        <Route path="/seg_ventas" component={SegVenta} />
+        <Route path="/NewUserFuncion"><CreateUserFuncion/></Route>
       </div>
-
-    
-
-
     </Router>
   );
-
 }
-
-
 export default App;
