@@ -31,7 +31,8 @@ export default class prodList extends Component {
     render() {
         return (
 
-            <div className="container">
+            <div className="container container-sm">
+                
                 <table className="table  ">
                     <thead>
                         <tr className="table-primary">
@@ -50,12 +51,12 @@ export default class prodList extends Component {
                                 <td>{prod.Detalle}</td>
                                 <td>{prod.Precio}</td>
                                 <td>{prod.Estado}</td>
-                                <td><button className="btn btn-danger" onClick={() => this.prodDelete(prod._id)}>
-                                    Eliminar
+                                <td><button className="btn btn-danger btn-sm" onClick={() => this.prodDelete(prod._id)}>
+                                Eliminar
                                 </button>
-                                <Link className="btn btn-secondary" to={"/editp/" + prod._id}>
-                                        Editar
-                                    </Link>
+                                <Link className="btn btn-secondary btn-sm" to={"/editp/" + prod._id}>
+                                Editar
+                                </Link>
                                 </td>
                             </tr>
                         </tbody>
@@ -63,11 +64,9 @@ export default class prodList extends Component {
                     }
                 </table>
 
-                <div className="card-header d-flex justify-content-between">
-
-
-                    <Link className="btn btn-info" to={"/newProd"} >
-                        <p class="fw-bold">Nuevo producto</p>
+                <div className="card-header ">
+                    <Link className="btn btn-info btn-sm" to={"/newProd"} >
+                        <p>Nuevo producto</p>
                     </Link>
                 </div>
 

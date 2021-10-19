@@ -1,7 +1,11 @@
-import React, { Component } from 'react'
-import DatePicker from 'react-datepicker';
+import React, { Component, Link } from 'react'
+
+import DatePicker, {registerLocale} from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css'
 import axios from 'axios'
+import es from "date-fns/locale/es";
+registerLocale("es",es);
+
 
 export default class CreateVenta extends Component {
 
@@ -100,7 +104,10 @@ export default class CreateVenta extends Component {
                             <DatePicker 
                             className="form-control" 
                             selected={this.state.fechaVenta} 
-                            onChange={this.onChangeDate} />
+                            onChange={this.onChangeDate}
+                            locale="es"
+                            
+                             />
                         </div>
                         {/* Selecciona producto */}
                         <div className="form-group">
@@ -185,10 +192,10 @@ export default class CreateVenta extends Component {
                                 name="vendedor"
                                 value={this.state.vendedor}
                                 required />
-                        </div>
+                        </div>                        
                         <button className="btn btn-primary">
                             Guardar <i className="material-icons"></i>
-                        </button>
+                        </button>  
                     </form>
                 </div>
             </div>

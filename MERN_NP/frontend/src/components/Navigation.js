@@ -7,7 +7,7 @@ export default class Navigation extends Component {
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark ">
                 <div className="container">
                     <Link className="navbar-brand" to="/">
-                        ║Nova Project║
+                    ║Nova Project║
                     </Link>
 
                     <button className="navbar-toggler" type="button" 
@@ -26,13 +26,9 @@ export default class Navigation extends Component {
                             <li className="nav-item">
                             <Link className="nav-link" to="/seg_ventas" >Gestión ventas</Link>
                             </li>
-                        </ul>
+                        </ul>                        
                     </div>
-
                 </div>
-
-
-
             </nav>
         )
     }

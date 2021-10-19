@@ -31,7 +31,7 @@ export default class ventaList extends Component {
     render() {
         return (
 
-            <div className="container">
+            <div className="container container-sm">
                 <table className="table  ">
                     <thead>
                         <tr className="table-primary">
@@ -63,14 +63,20 @@ export default class ventaList extends Component {
 
 
                                 
-                                <td><button className="btn btn-danger" onClick={() => this.ventaDelete(venta._id)}>
+                                <td>
+                                <div className="row">
+                                <div className="col-md-2 col-xs-6">
+                                <button className="btn btn-danger btn-sm" onClick={() => this.ventaDelete(venta._id)}>
                                     Eliminar
                                 </button>
 
-                                <Link className="btn btn-secondary" to={"/editv/" + venta._id}>
+                                <Link className="btn btn-secondary btn-sm" to={"/editv/" + venta._id}>
                                         Editar
-                                    </Link>
+                                </Link>
+                                </div>
+                                </div>
                                 </td>
+                                
                             </tr>
                         </tbody>
                     ))
@@ -80,8 +86,8 @@ export default class ventaList extends Component {
                 <div className="card-header d-flex justify-content-between">
 
 
-                    <Link className="btn btn-info" to={"/ventas"} >
-                        <p class="fw-bold">Nueva venta</p>
+                    <Link className="btn btn-info btn-sm" to={"/ventas"} >
+                        <p>Nueva venta</p>
                     </Link>
                 </div>
 
